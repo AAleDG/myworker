@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:myworkers/core/l10n/delegates/core_localizations.dart';
 import 'package:myworkers/core/router/router.dart';
 
 void main() {
+  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
     MyApp(),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final _appRouter = AppRouter();
 
   // This widget is the root of your application.
@@ -16,6 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: _appRouter.config(),
+      supportedLocales: CoreLocalizations.supportedLocales,
+      localizationsDelegates: const [
+        ...CoreLocalizations.localizationsDelegates,
+      ],
+      locale: const Locale('it'),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

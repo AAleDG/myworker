@@ -1,0 +1,8 @@
+arb-dir: lib/core/l10n/arb
+template-arb-file: it.arb
+output-localization-file: core_localizations.dart
+nullable-getter: false
+output-class: CoreLocalizations
+synthetic-package: false
+output-dir: lib/core/l10n/delegates
+untranslated-messages-file: untranslated_messages.json
