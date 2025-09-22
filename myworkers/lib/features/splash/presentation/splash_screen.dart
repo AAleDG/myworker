@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       await Future.wait([
         Future.delayed(const Duration(seconds: 2)),
       ]);
-      AutoRouter.of(context).push(LoginRoute());
+      AutoRouter.of(context).push(const LoginRoute());
     });
   }
 

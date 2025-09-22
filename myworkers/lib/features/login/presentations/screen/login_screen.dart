@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   AppButton(
                     onPressed: () {
-                      AutoRouter.of(context).push(FeatRoute());
+                      AutoRouter.of(context).push(const FeatRoute());
                     },
                     textButton: context.l10nCore.splashPageAccessButtonText,
                   ),
@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   AppButton(
                     onPressed: () {
-                      AutoRouter.of(context).push(RegistrationRoute());
+                      AutoRouter.of(context).push(const RegistrationRoute());
                     },
                     textButton: context.l10nCore.splashPageRegisterButtonText,
                   ),
