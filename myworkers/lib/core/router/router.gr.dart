@@ -10,20 +10,39 @@
 part of 'router.dart';
 
 /// generated route for
-/// [FeatPage]
-class FeatRoute extends PageRouteInfo<void> {
-  const FeatRoute({List<PageRouteInfo>? children})
+/// [HomeScreen]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
       : super(
-          FeatRoute.name,
+          HomeRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'FeatRoute';
+  static const String name = 'HomeRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const FeatPage();
+      return const HomeScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [InitialPage]
+class InitialRoute extends PageRouteInfo<void> {
+  const InitialRoute({List<PageRouteInfo>? children})
+      : super(
+          InitialRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'InitialRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const InitialPage();
     },
   );
 }
