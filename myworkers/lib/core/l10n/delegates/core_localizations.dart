@@ -104,7 +104,7 @@ abstract class CoreLocalizations {
   /// No description provided for @splashPageAccessButtonText.
   ///
   /// In it, this message translates to:
-  /// **'Accedi'**
+  /// **'Login'**
   String get splashPageAccessButtonText;
 
   /// No description provided for @splashPageRegisterButtonText.
@@ -118,6 +118,60 @@ abstract class CoreLocalizations {
   /// In it, this message translates to:
   /// **'Conferma'**
   String get confirmButtonText;
+
+  /// No description provided for @loginPageTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci i tuoi dati'**
+  String get loginPageTitle;
+
+  /// No description provided for @loginPageEmailHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci la tua email'**
+  String get loginPageEmailHint;
+
+  /// No description provided for @loginPagePasswordHint.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci la tua password'**
+  String get loginPagePasswordHint;
+
+  /// No description provided for @loginPageHintTextErrorEmptyEmail.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci un\'email valida!'**
+  String get loginPageHintTextErrorEmptyEmail;
+
+  /// No description provided for @loginPageHintTextValidEmail.
+  ///
+  /// In it, this message translates to:
+  /// **'Email non valida'**
+  String get loginPageHintTextValidEmail;
+
+  /// No description provided for @loginPageHintTextErrorEmptyPassword.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci una password valida!'**
+  String get loginPageHintTextErrorEmptyPassword;
+
+  /// No description provided for @loginPageHintTextValidPassword.
+  ///
+  /// In it, this message translates to:
+  /// **'La password deve essere di almeno 8 caratteri'**
+  String get loginPageHintTextValidPassword;
+
+  /// No description provided for @loginPageRememberMe.
+  ///
+  /// In it, this message translates to:
+  /// **'Ricorda i dati di accesso'**
+  String get loginPageRememberMe;
+
+  /// No description provided for @loginPageAccessButtonText.
+  ///
+  /// In it, this message translates to:
+  /// **'Accedi'**
+  String get loginPageAccessButtonText;
 }
 
 class _CoreLocalizationsDelegate extends LocalizationsDelegate<CoreLocalizations> {

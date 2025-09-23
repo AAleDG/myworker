@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:myworkers/features/login/presentations/screen/feat_page.dart';
+import 'package:myworkers/features/home/presentation/home_screen.dart';
+import 'package:myworkers/features/login/presentations/screen/initial_screen.dart';
 import 'package:myworkers/features/login/presentations/screen/login_screen.dart';
 import 'package:myworkers/features/registration/presentations/registration_screen.dart';
 import 'package:myworkers/features/splash/presentation/splash_screen.dart';
@@ -15,6 +16,7 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(page: RegistrationRoute.page),
         AutoRoute(page: SplashRoute.page, initial: true),
-        AutoRoute(page: FeatRoute.page),
+        AutoRoute(page: InitialRoute.page),
+        AutoRoute(page: HomeRoute.page),
       ];
 }

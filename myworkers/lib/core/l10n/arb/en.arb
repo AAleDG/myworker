@@ -1,7 +1,16 @@
 {
   "@@locale": "en",
-  "splashPageTitle": "Welcome in AF Progettazioni!",
+  "splashPageTitle": "Benvenuto in AF Progettazioni!",
   "splashPageAccessButtonText": "Login",
-  "splashPageRegisterButtonText": "Register",
-  "confirmButtonText": "Confirm"
+  "splashPageRegisterButtonText": "Registrati",
+  "confirmButtonText": "Conferma",
+  "loginPageTitle": "Inserisci i tuoi dati",
+  "loginPageEmailHint": "Inserisci la tua email",
+  "loginPagePasswordHint": "Inserisci la tua password",
+  "loginPageHintTextErrorEmptyEmail": "Inserisci un'email valida!",
+  "loginPageHintTextValidEmail": "Email non valida",
+  "loginPageHintTextErrorEmptyPassword": "Inserisci una password valida!",
+  "loginPageHintTextValidPassword": "La password deve essere di almeno 8 caratteri",
+  "loginPageRememberMe": "Ricorda i dati di accesso",
+  "loginPageAccessButtonText": "Accedi"
 }
