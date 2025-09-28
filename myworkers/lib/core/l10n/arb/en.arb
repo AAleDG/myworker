@@ -12,5 +12,12 @@
   "loginPageHintTextErrorEmptyPassword": "Inserisci una password valida!",
   "loginPageHintTextValidPassword": "La password deve essere di almeno 8 caratteri",
   "loginPageRememberMe": "Ricorda i dati di accesso",
-  "loginPageAccessButtonText": "Accedi"
+  "loginPageAccessButtonText": "Accedi",
+  "registrationPageTitle": "Registra i tuoi dati",
+  "registrationPageHintName": "Inserisci il tuo nome",
+  "registrationPageHintSurname": "Inserisci il tuo cognome",
+  "registrationPageHintCF": "Inserisci il tuo CF",
+  "registrationPageHintGender": "Seleziona il tuo genere",
+  "registrationPageHintPhoneConfirm": "Inserisci il numero di conferma",
+  "registrationPageHintPhone": "Inserisci il tuo numero di telefono"
 }
