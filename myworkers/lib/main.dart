@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myworkers/core/l10n/delegates/core_localizations.dart';
+import 'package:myworkers/core/l10n/arb/core_localizations.dart';
 import 'package:myworkers/core/provider/app_multi_bloc.dart';
 import 'package:myworkers/core/router/router.dart';
 
@@ -37,9 +37,7 @@ class _MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        
       ),
     );
-    
   }
 }
