@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:myworkers/features/firebase/auth_gate.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -19,14 +20,31 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: const Center(
-          child: Text(
-            'Home Screen',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 26,
-              fontWeight: FontWeight.w500,
-            ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${AuthService().currentUser?.email ?? 'No user'}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  AuthService().signOut();
+                },
+                child: Text('logout'),
+              ),
+              GestureDetector(
+                onTap: () {
+                  AuthService().signInWithGoogleFirebase();
+                },
+                child: Text('login 2'),
+              )
+            ],
           ),
         ),
       ),

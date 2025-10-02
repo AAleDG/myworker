@@ -62,7 +62,8 @@ import 'core_localizations_it.dart';
 /// be consistent with the languages listed in the CoreLocalizations.supportedLocales
 /// property.
 abstract class CoreLocalizations {
-  CoreLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  CoreLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class CoreLocalizations {
     return Localizations.of<CoreLocalizations>(context, CoreLocalizations)!;
   }
 
-  static const LocalizationsDelegate<CoreLocalizations> delegate = _CoreLocalizationsDelegate();
+  static const LocalizationsDelegate<CoreLocalizations> delegate =
+      _CoreLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,7 +84,8 @@ abstract class CoreLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -216,34 +219,36 @@ abstract class CoreLocalizations {
   String get registrationPageHintPhone;
 }
 
-class _CoreLocalizationsDelegate extends LocalizationsDelegate<CoreLocalizations> {
+class _CoreLocalizationsDelegate
+    extends LocalizationsDelegate<CoreLocalizations> {
   const _CoreLocalizationsDelegate();
 
   @override
   Future<CoreLocalizations> load(Locale locale) {
-    return SynchronousFuture<CoreLocalizations>(lookupCoreLocalizations(locale));
+    return SynchronousFuture<CoreLocalizations>(
+        lookupCoreLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'it'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'it'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_CoreLocalizationsDelegate old) => false;
 }
 
 CoreLocalizations lookupCoreLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return CoreLocalizationsEn();
-    case 'it': return CoreLocalizationsIt();
+    case 'en':
+      return CoreLocalizationsEn();
+    case 'it':
+      return CoreLocalizationsIt();
   }
 
   throw FlutterError(
-    'CoreLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'CoreLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

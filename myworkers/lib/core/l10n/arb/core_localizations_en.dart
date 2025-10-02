@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'core_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -34,10 +36,12 @@ class CoreLocalizationsEn extends CoreLocalizations {
   String get loginPageHintTextValidEmail => 'Email non valida';
 
   @override
-  String get loginPageHintTextErrorEmptyPassword => 'Inserisci una password valida!';
+  String get loginPageHintTextErrorEmptyPassword =>
+      'Inserisci una password valida!';
 
   @override
-  String get loginPageHintTextValidPassword => 'La password deve essere di almeno 8 caratteri';
+  String get loginPageHintTextValidPassword =>
+      'La password deve essere di almeno 8 caratteri';
 
   @override
   String get loginPageRememberMe => 'Ricorda i dati di accesso';
@@ -61,7 +65,8 @@ class CoreLocalizationsEn extends CoreLocalizations {
   String get registrationPageHintGender => 'Seleziona il tuo genere';
 
   @override
-  String get registrationPageHintPhoneConfirm => 'Inserisci il numero di conferma';
+  String get registrationPageHintPhoneConfirm =>
+      'Inserisci il numero di conferma';
 
   @override
   String get registrationPageHintPhone => 'Inserisci il tuo numero di telefono';

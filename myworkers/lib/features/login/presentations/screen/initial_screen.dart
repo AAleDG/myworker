@@ -4,10 +4,24 @@ import 'package:myworkers/core/common_widgets/app_button.dart';
 import 'package:myworkers/core/common_widgets/app_text.dart';
 import 'package:myworkers/core/l10n/l10n_ext.dart';
 import 'package:myworkers/core/router/router.dart';
+import 'package:myworkers/features/firebase/auth_gate.dart';
 
 @RoutePage()
-class InitialPage extends StatelessWidget {
+class InitialPage extends StatefulWidget {
   const InitialPage({super.key});
+
+  @override
+  State<InitialPage> createState() => _InitialPageState();
+}
+
+class _InitialPageState extends State<InitialPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      //await AuthService.signInWithGoogleSilently();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +52,7 @@ class InitialPage extends StatelessWidget {
                   ),
                   AppButton(
                     onPressed: () {
-                      AutoRouter.of(context).push( LoginRoute());
+                      AutoRouter.of(context).push(LoginRoute());
                     },
                     textButton: context.l10nCore.splashPageAccessButtonText,
                   ),
@@ -50,6 +64,13 @@ class InitialPage extends StatelessWidget {
                       AutoRouter.of(context).push(const RegistrationRoute());
                     },
                     textButton: context.l10nCore.splashPageRegisterButtonText,
+                  ),
+                  AppButton(
+                    onPressed: () async{
+                      await AuthService().signInWithGoogle();
+                      //AutoRouter.of(context).push(const HomeRoute());
+                    },
+                    textButton: 'Accedi con Google',
                   ),
                 ],
               ),
