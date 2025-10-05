@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:myworkers/core/l10n/arb/core_localizations.dart';
 import 'package:myworkers/core/provider/app_multi_bloc.dart';
 import 'package:myworkers/core/router/router.dart';
+import 'package:myworkers/features/firebase/auth_gate.dart';
 
 import 'firebase_options.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await GoogleSignInService.initSignIn();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

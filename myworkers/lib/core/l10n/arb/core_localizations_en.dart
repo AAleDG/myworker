@@ -70,4 +70,31 @@ class CoreLocalizationsEn extends CoreLocalizations {
 
   @override
   String get registrationPageHintPhone => 'Inserisci il tuo numero di telefono';
+
+  @override
+  String get registrationNameErrorEmpty => 'Inserisci un nome valido!';
+
+  @override
+  String get registrationSurnameErrorEmpty => 'Inserisci un cognome valido!';
+
+  @override
+  String get registrationCFErrorEmpty => 'Inserisci un codice fiscale valido!';
+
+  @override
+  String get registrationCFValidError =>
+      'Il codice fiscale deve essere di 16 caratteri!';
+
+  @override
+  String get registrationGenderErrorEmpty => 'Seleziona un genere valido!';
+
+  @override
+  String get registrationPhoneErrorEmpty =>
+      'Inserisci un numero di telefono valido!';
+
+  @override
+  String get registrationPhoneLengthError =>
+      'Il numero di telefono deve essere di almeno 10 cifre!';
+
+  @override
+  String get loginTextWithGoogle => 'Accedi con Google';
 }

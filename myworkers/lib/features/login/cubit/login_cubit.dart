@@ -1,8 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:myworkers/core/router/router.dart';
 
 part 'login_state.dart';
 
@@ -10,6 +8,11 @@ class LoginCubit extends Cubit<LoginState> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   LoginCubit() : super(const LoginState());
+
+  void initCubit() {
+    emailController.clear();
+    passwordController.clear();
+  }
 
   void updatePassword(String password) {
     passwordController.text = password;
@@ -24,8 +27,22 @@ class LoginCubit extends Cubit<LoginState> {
   void toggleShowPassword() =>
       emit(state.copyWith(showPassword: !state.showPassword));
 
-  void checkStatus(BuildContext context,) {
-    AutoRouter.of(context).push(const HomeRoute());
+  void checkStatus(
+    BuildContext context,
+    bool checkStatus,
+  ) {
+    if (checkStatus) {
+      // AuthService()
+      //     .registerNewUser(
+      //   emailController.text,
+      //   passwordController.text,
+      // )
+      //     .then((value) {
+      //   AutoRouter.of(context).push(HomeRoute());
+      // });
+    } else {
+      return;
+    }
   }
 
   void updateDataaccess() =>
