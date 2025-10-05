@@ -19,5 +19,13 @@
   "registrationPageHintCF": "Inserisci il tuo CF",
   "registrationPageHintGender": "Seleziona il tuo genere",
   "registrationPageHintPhoneConfirm": "Inserisci il numero di conferma",
-  "registrationPageHintPhone": "Inserisci il tuo numero di telefono"
+  "registrationPageHintPhone": "Inserisci il tuo numero di telefono",
+  "registrationNameErrorEmpty": "Inserisci un nome valido!",
+  "registrationSurnameErrorEmpty": "Inserisci un cognome valido!",
+  "registrationCFErrorEmpty": "Inserisci un codice fiscale valido!",
+  "registrationCFValidError": "Il codice fiscale deve essere di 16 caratteri!",
+  "registrationGenderErrorEmpty": "Seleziona un genere valido!",
+  "registrationPhoneErrorEmpty": "Inserisci un numero di telefono valido!",
+  "registrationPhoneLengthError": "Il numero di telefono deve essere di almeno 10 cifre!",
+  "loginTextWithGoogle":"Accedi con Google"
 }

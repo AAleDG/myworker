@@ -1,11 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:myworkers/core/l10n/delegates/core_localizations.dart';
+import 'package:myworkers/core/l10n/arb/core_localizations.dart';
 import 'package:myworkers/core/provider/app_multi_bloc.dart';
 import 'package:myworkers/core/router/router.dart';
+import 'package:myworkers/features/firebase/auth_gate.dart';
 
-void main() {
-  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GoogleSignInService.initSignIn();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     const MyApp(),
   );
@@ -37,9 +44,7 @@ class _MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        
       ),
     );
-    
   }
 }

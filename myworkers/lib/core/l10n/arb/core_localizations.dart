@@ -18,7 +18,7 @@ import 'core_localizations_it.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'delegates/core_localizations.dart';
+/// import 'arb/core_localizations.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: CoreLocalizations.localizationsDelegates,
@@ -217,6 +217,54 @@ abstract class CoreLocalizations {
   /// In it, this message translates to:
   /// **'Inserisci il tuo numero di telefono'**
   String get registrationPageHintPhone;
+
+  /// No description provided for @registrationNameErrorEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci un nome valido!'**
+  String get registrationNameErrorEmpty;
+
+  /// No description provided for @registrationSurnameErrorEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci un cognome valido!'**
+  String get registrationSurnameErrorEmpty;
+
+  /// No description provided for @registrationCFErrorEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci un codice fiscale valido!'**
+  String get registrationCFErrorEmpty;
+
+  /// No description provided for @registrationCFValidError.
+  ///
+  /// In it, this message translates to:
+  /// **'Il codice fiscale deve essere di 16 caratteri!'**
+  String get registrationCFValidError;
+
+  /// No description provided for @registrationGenderErrorEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Seleziona un genere valido!'**
+  String get registrationGenderErrorEmpty;
+
+  /// No description provided for @registrationPhoneErrorEmpty.
+  ///
+  /// In it, this message translates to:
+  /// **'Inserisci un numero di telefono valido!'**
+  String get registrationPhoneErrorEmpty;
+
+  /// No description provided for @registrationPhoneLengthError.
+  ///
+  /// In it, this message translates to:
+  /// **'Il numero di telefono deve essere di almeno 10 cifre!'**
+  String get registrationPhoneLengthError;
+
+  /// No description provided for @loginTextWithGoogle.
+  ///
+  /// In it, this message translates to:
+  /// **'Accedi con Google'**
+  String get loginTextWithGoogle;
 }
 
 class _CoreLocalizationsDelegate

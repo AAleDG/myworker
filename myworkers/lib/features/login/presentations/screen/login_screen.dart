@@ -2,13 +2,28 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myworkers/core/l10n/l10n_ext.dart';
+import 'package:myworkers/core/router/router.dart';
+import 'package:myworkers/features/firebase/auth_gate.dart';
 import 'package:myworkers/features/login/cubit/login_cubit.dart';
 
 import '../../../../core/common_widgets/export_widgets.dart';
 
 @RoutePage()
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<LoginCubit>().initCubit();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +60,7 @@ class LoginScreen extends StatelessWidget {
                       height: 30,
                     ),
                     AppTextField(
+                      onChange: context.read<LoginCubit>().updateEmail,
                       controller: context.read<LoginCubit>().emailController,
                       hintText: context.l10nCore.loginPageEmailHint,
                       validator: (value) {
@@ -63,6 +79,7 @@ class LoginScreen extends StatelessWidget {
                       height: 30,
                     ),
                     AppTextField(
+                      onChange: context.read<LoginCubit>().updatePassword,
                       controller: context.read<LoginCubit>().passwordController,
                       hintText: context.l10nCore.loginPagePasswordHint,
                       obscureText: state.showPassword,
@@ -111,9 +128,22 @@ class LoginScreen extends StatelessWidget {
                     AppButton(
                       onPressed: () {
                         if (keys.currentState!.validate()) {
-                          context.read<LoginCubit>().checkStatus(
-                                context,
-                              );
+                          if (GoogleSignInService.errorCode.isNotEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: Colors.white,
+                                content: Text(
+                                  GoogleSignInService.errorCode,
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                            );
+                          }
+                          GoogleSignInService.loginUser(
+                                  state.email, state.password)
+                              .then((value) {
+                            AutoRouter.of(context).push(const HomeRoute());
+                          });
                         }
                       },
                       textButton: context.l10nCore.loginPageAccessButtonText,

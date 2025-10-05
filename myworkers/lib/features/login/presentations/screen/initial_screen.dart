@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:myworkers/core/common_widgets/app_button.dart';
 import 'package:myworkers/core/common_widgets/app_text.dart';
 import 'package:myworkers/core/l10n/l10n_ext.dart';
 import 'package:myworkers/core/router/router.dart';
+import 'package:myworkers/features/firebase/auth_gate.dart';
 
 @RoutePage()
 class InitialPage extends StatelessWidget {
@@ -38,7 +40,7 @@ class InitialPage extends StatelessWidget {
                   ),
                   AppButton(
                     onPressed: () {
-                      AutoRouter.of(context).push( LoginRoute());
+                      AutoRouter.of(context).push(const LoginRoute());
                     },
                     textButton: context.l10nCore.splashPageAccessButtonText,
                   ),
@@ -50,6 +52,38 @@ class InitialPage extends StatelessWidget {
                       AutoRouter.of(context).push(const RegistrationRoute());
                     },
                     textButton: context.l10nCore.splashPageRegisterButtonText,
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      await GoogleSignInService.signInWithGoogle()
+                          .then((value) {
+                        AutoRouter.of(context).push(const HomeRoute());
+                      });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons_svg/google_icon.svg',
+                          height: 50,
+                          width: 50,
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        AppText(
+                          context.l10nCore.loginTextWithGoogle,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

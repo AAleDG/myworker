@@ -45,6 +45,7 @@ class RegistrationScreen extends StatelessWidget {
                       height: 30,
                     ),
                     AppTextField(
+                      onChange: context.read<RegistrationCubit>().updateEmail,
                       controller:
                           context.read<RegistrationCubit>().emailController,
                       hintText: context.l10nCore.loginPageEmailHint,
@@ -67,14 +68,10 @@ class RegistrationScreen extends StatelessWidget {
                       controller:
                           context.read<RegistrationCubit>().nameController,
                       hintText: context.l10nCore.registrationPageHintName,
-                      onPressed: () {},
+                      onChange: context.read<RegistrationCubit>().updateName,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return context
-                              .l10nCore.loginPageHintTextErrorEmptyPassword;
-                        } else if (value.length <= 8) {
-                          return context
-                              .l10nCore.loginPageHintTextValidPassword;
+                          return context.l10nCore.registrationNameErrorEmpty;
                         }
                         return null;
                       },
@@ -83,35 +80,30 @@ class RegistrationScreen extends StatelessWidget {
                       height: 30,
                     ),
                     AppTextField(
+                      onChange: context.read<RegistrationCubit>().updateSurname,
                       controller:
                           context.read<RegistrationCubit>().surnameController,
                       hintText: context.l10nCore.registrationPageHintSurname,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return context
-                              .l10nCore.loginPageHintTextErrorEmptyEmail;
-                        } else if (!value.contains('@') ||
-                            !value.contains('.')) {
-                          return context.l10nCore.loginPageHintTextValidEmail;
-                        } else {
-                          return null;
+                          return context.l10nCore.registrationSurnameErrorEmpty;
                         }
+                        return null;
                       },
                     ),
                     const SizedBox(
                       height: 30,
                     ),
                     AppTextField(
+                      onChange: context.read<RegistrationCubit>().updateCF,
                       controller:
                           context.read<RegistrationCubit>().cfController,
                       hintText: context.l10nCore.registrationPageHintCF,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return context
-                              .l10nCore.loginPageHintTextErrorEmptyEmail;
-                        } else if (!value.contains('@') ||
-                            !value.contains('.')) {
-                          return context.l10nCore.loginPageHintTextValidEmail;
+                          return context.l10nCore.registrationCFErrorEmpty;
+                        } else if (value.length != 16) {
+                          return context.l10nCore.registrationCFValidError;
                         } else {
                           return null;
                         }
@@ -121,36 +113,30 @@ class RegistrationScreen extends StatelessWidget {
                       height: 30,
                     ),
                     AppTextField(
-                      controller: context
-                          .read<RegistrationCubit>()
-                          .confirmPasswordController,
+                      onChange: context.read<RegistrationCubit>().updateGender,
+                      controller:
+                          context.read<RegistrationCubit>().genderController,
                       hintText: context.l10nCore.registrationPageHintGender,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return context
-                              .l10nCore.loginPageHintTextErrorEmptyEmail;
-                        } else if (!value.contains('@') ||
-                            !value.contains('.')) {
-                          return context.l10nCore.loginPageHintTextValidEmail;
-                        } else {
-                          return null;
+                          return context.l10nCore.registrationGenderErrorEmpty;
                         }
+                        return null;
                       },
                     ),
                     const SizedBox(
                       height: 30,
                     ),
                     AppTextField(
+                      onChange: context.read<RegistrationCubit>().updatePhone,
                       controller:
                           context.read<RegistrationCubit>().phoneController,
                       hintText: context.l10nCore.registrationPageHintPhone,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return context
-                              .l10nCore.loginPageHintTextErrorEmptyEmail;
-                        } else if (!value.contains('@') ||
-                            !value.contains('.')) {
-                          return context.l10nCore.loginPageHintTextValidEmail;
+                          return context.l10nCore.registrationPhoneErrorEmpty;
+                        } else if (value.length < 10) {
+                          return context.l10nCore.registrationPhoneLengthError;
                         } else {
                           return null;
                         }
@@ -160,63 +146,14 @@ class RegistrationScreen extends StatelessWidget {
                       height: 30,
                     ),
                     //TODO TOGLIERE IL NUMERO DI CONFERMA ED FAR ARRIVARE AL TELEFONO DI ALE IL CODICE DI CONFERMA
-                    AppTextField(
-                      controller: context
-                          .read<RegistrationCubit>()
-                          .phoneConfirmController,
-                      hintText:
-                          context.l10nCore.registrationPageHintPhoneConfirm,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return context
-                              .l10nCore.loginPageHintTextErrorEmptyEmail;
-                        } else if (!value.contains('@') ||
-                            !value.contains('.')) {
-                          return context.l10nCore.loginPageHintTextValidEmail;
-                        } else {
-                          return null;
-                        }
-                      },
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: state.showPassword,
-                          activeColor: Colors.blue,
-                          side: const BorderSide(
-                            color: Colors.white,
-                            width: 2,
-                          ),
-                          onChanged: (_) {
-                            //context.read<LoginCubit>().updateDataaccess();
-                          },
-                        ),
-                        AppText(
-                          context.l10nCore.loginPageRememberMe,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          maxLines: 1,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
                     AppButton(
                       onPressed: () {
-                        if (keys.currentState!.validate()) {
-                          // context.read<LoginCubit>().checkStatus(
-                          //       context,
-                          //     );
-                        }
+                        context.read<RegistrationCubit>().checkStatus(
+                              context,
+                              keys.currentState!.validate(),
+                            );
                       },
-                      textButton: 'Registrati',
+                      textButton: context.l10nCore.splashPageRegisterButtonText,
                     ),
                   ],
                 ),
