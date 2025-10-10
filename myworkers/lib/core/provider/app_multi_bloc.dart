@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myworkers/features/home/cubit/home_cubit.dart';
 import 'package:myworkers/features/login/cubit/login_cubit.dart';
 import 'package:myworkers/features/registration/cubit/registration_cubit.dart';
 
@@ -19,6 +20,9 @@ class AppMultiBlocProvider extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => RegistrationCubit(),
+        ),
+        BlocProvider(
+          create: (context) => HomeCubit(),
         ),
       ],
       child: child,

@@ -97,4 +97,13 @@ class CoreLocalizationsIt extends CoreLocalizations {
 
   @override
   String get loginTextWithGoogle => 'Accedi con Google';
+
+  @override
+  String get homePagePersonalInfo => 'Info Personali';
+
+  @override
+  String get homePageRequest => 'Richieste';
+
+  @override
+  String get homePageProfile => 'Profilo';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myworkers/core/utils/common_style.dart';
 
 class AppText extends StatelessWidget {
   final String text;
@@ -26,11 +27,7 @@ class AppText extends StatelessWidget {
       maxLines: maxLines ?? 1,
       textDirection: textDirection ?? TextDirection.ltr,
       style: style ??
-          const TextStyle(
-            color: Colors.white,
-            fontSize: 26,
-            fontWeight: FontWeight.w500,
-          ),
+          CommonTextStyle.standard,
     );
   }
 }

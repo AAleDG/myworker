@@ -265,6 +265,24 @@ abstract class CoreLocalizations {
   /// In it, this message translates to:
   /// **'Accedi con Google'**
   String get loginTextWithGoogle;
+
+  /// No description provided for @homePagePersonalInfo.
+  ///
+  /// In it, this message translates to:
+  /// **'Info Personali'**
+  String get homePagePersonalInfo;
+
+  /// No description provided for @homePageRequest.
+  ///
+  /// In it, this message translates to:
+  /// **'Richieste'**
+  String get homePageRequest;
+
+  /// No description provided for @homePageProfile.
+  ///
+  /// In it, this message translates to:
+  /// **'Profilo'**
+  String get homePageProfile;
 }
 
 class _CoreLocalizationsDelegate

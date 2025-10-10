@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:myworkers/core/router/router.dart';
-import 'package:myworkers/features/firebase/auth_gate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myworkers/core/l10n/l10n.dart';
+import 'package:myworkers/core/utils/common_icon.dart';
+import 'package:myworkers/features/home/cubit/home_cubit.dart';
+import 'package:myworkers/features/home/widgets/navigation_bar_item_widget.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -13,103 +15,55 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? cf = '';
-  Future<void> getData() async {
-    print(GoogleSignInService.getCurrentUser()?.uid);
-    final userDoc = FirebaseFirestore.instance
-        .collection('users')
-        .doc(GoogleSignInService.getCurrentUser()?.uid);
-    final docSnapshot = await userDoc.get();
-    print(docSnapshot.data());
-    if (docSnapshot.exists) {
-      print('im here');
-      setState(() {
-        cf = docSnapshot.get('cf');
-      });
-    }
-  }
-
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getData();
-    });
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async{
+      await context.read<HomeCubit>().getCurrentUser();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.blue[800]!,
-              Colors.red[800]!,
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        return Scaffold(
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: state.index,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            unselectedItemColor: Colors.blueGrey,
+            selectedItemColor: Colors.blue,
+            type: BottomNavigationBarType.fixed,
+            onTap: (newIndex) =>
+                context.read<HomeCubit>().updateIndex(newIndex),
+            items: [
+              BottomNavigationBarItem(
+                icon: NavigationBarItemWidget(
+                  iconPath: AppIcon.user,
+                  isSelected: state.index == 0,
+                ),
+                label: context.l10nCore.homePagePersonalInfo,
+              ),
+              BottomNavigationBarItem(
+                icon: NavigationBarItemWidget(
+                  iconPath: AppIcon.request,
+                  isSelected: state.index == 1,
+                ),
+                label: context.l10nCore.homePageRequest,
+              ),
+              BottomNavigationBarItem(
+                icon: NavigationBarItemWidget(
+                  iconPath: AppIcon.profile,
+                  isSelected: state.index == 2,
+                ),
+                label: context.l10nCore.homePageProfile,
+              ),
             ],
           ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '${GoogleSignInService.getCurrentUser()?.phoneNumber ?? 'No user'}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '${cf ?? 'No user'}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '${GoogleSignInService.getCurrentUser()?.uid ?? 'No user'}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              GestureDetector(
-                onTap: () {
-                  GoogleSignInService.signOut().then((_) {
-                    AutoRouter.of(context).replaceAll(
-                      [
-                        const InitialRoute(),
-                      ],
-                    );
-                  });
-                },
-                child: Text('logout'),
-              ),
-              GestureDetector(
-                onTap: () {
-                  GoogleSignInService.signInWithGoogle();
-                },
-                child: Text('login 2'),
-              )
-            ],
-          ),
-        ),
-      ),
+          body: context.read<HomeCubit>().bodyWidget(),
+        );
+      },
     );
   }
 }

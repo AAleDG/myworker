@@ -25,8 +25,21 @@ class GoogleSignInService {
   static Future<UserCredential> loginUser(String email, String password) async {
     try {
       final userCredential = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
       if (userCredential.user != null) {
+        final userDoc = FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential.user!.uid);
+        final docSnapshot = await userDoc.get();
+        if (!docSnapshot.exists) {
+          await userDoc.set({
+            'uid': userCredential.user!.uid,
+            'name': 'prova12',
+            'email': email,
+          });
+        }
         log("Successfully logged in user with email: ${userCredential.user!.email}");
         return userCredential;
       } else {
