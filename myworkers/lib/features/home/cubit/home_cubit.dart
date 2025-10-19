@@ -28,7 +28,6 @@ class HomeCubit extends Cubit<HomeState> {
         name: docSnapshot.get('name') ?? '',
         cf: docSnapshot.get('cf') ?? '',
         surname: docSnapshot.get('surname') ?? '',
-        phoneNumber: docSnapshot.get('phoneNumber') ?? '',
       );
       emit(state.copyWith(user: user));
     }
