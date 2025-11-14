@@ -9,6 +9,9 @@ class RegistrationState extends Equatable {
   final String phone;
   final String name;
   final String cf;
+  final bool isAwaitingConfirmation;
+  final bool isLoading;
+  final String? errorMessage;
 
   const RegistrationState({
     this.showPassword = false,
@@ -19,6 +22,9 @@ class RegistrationState extends Equatable {
     this.phone = '',
     this.name = '',
     this.cf = '',
+    this.isAwaitingConfirmation = false,
+    this.isLoading = false,
+    this.errorMessage,
   });
   @override
   List<Object?> get props => [
@@ -30,6 +36,9 @@ class RegistrationState extends Equatable {
         phone,
         name,
         cf,
+        isAwaitingConfirmation,
+        isLoading,
+        errorMessage,
       ];
 
   RegistrationState copyWith({
@@ -41,6 +50,9 @@ class RegistrationState extends Equatable {
     String? phone,
     String? name,
     String? cf,
+    bool? isAwaitingConfirmation,
+    bool? isLoading,
+    String? errorMessage,
   }) {
     return RegistrationState(
       showPassword: showPassword ?? this.showPassword,
@@ -51,6 +63,10 @@ class RegistrationState extends Equatable {
       phone: phone ?? this.phone,
       name: name ?? this.name,
       cf: cf ?? this.cf,
+      isAwaitingConfirmation:
+          isAwaitingConfirmation ?? this.isAwaitingConfirmation,
+      isLoading: isLoading ?? this.isLoading,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 }

@@ -139,11 +139,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             );
                           }
-                          GoogleSignInService.loginUser(
-                                  state.email, state.password)
-                              .then((value) {
-                            AutoRouter.of(context).push(const HomeRoute());
-                          });
+                          // GoogleSignInService.loginUser(
+                          //         state.email, state.password)
+                          //     .then((value) {
+                          //   AutoRouter.of(context).push(const HomeRoute());
+                          // });
                         }
                       },
                       textButton: context.l10nCore.loginPageAccessButtonText,

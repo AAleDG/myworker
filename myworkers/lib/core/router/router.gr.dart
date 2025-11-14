@@ -10,6 +10,25 @@
 part of 'router.dart';
 
 /// generated route for
+/// [CurrentUserScreen]
+class CurrentUserRoute extends PageRouteInfo<void> {
+  const CurrentUserRoute({List<PageRouteInfo>? children})
+      : super(
+          CurrentUserRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CurrentUserRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CurrentUserScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -67,6 +86,54 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PersonalInformationScreen]
+class PersonalInformationRoute
+    extends PageRouteInfo<PersonalInformationRouteArgs> {
+  PersonalInformationRoute({
+    Key? key,
+    User? user,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PersonalInformationRoute.name,
+          args: PersonalInformationRouteArgs(
+            key: key,
+            user: user,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PersonalInformationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PersonalInformationRouteArgs>(
+          orElse: () => const PersonalInformationRouteArgs());
+      return PersonalInformationScreen(
+        key: args.key,
+        user: args.user,
+      );
+    },
+  );
+}
+
+class PersonalInformationRouteArgs {
+  const PersonalInformationRouteArgs({
+    this.key,
+    this.user,
+  });
+
+  final Key? key;
+
+  final User? user;
+
+  @override
+  String toString() {
+    return 'PersonalInformationRouteArgs{key: $key, user: $user}';
+  }
+}
+
+/// generated route for
 /// [RegistrationScreen]
 class RegistrationRoute extends PageRouteInfo<void> {
   const RegistrationRoute({List<PageRouteInfo>? children})
@@ -81,6 +148,25 @@ class RegistrationRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const RegistrationScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [RequestScreen]
+class RequestRoute extends PageRouteInfo<void> {
+  const RequestRoute({List<PageRouteInfo>? children})
+      : super(
+          RequestRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RequestRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const RequestScreen();
     },
   );
 }
