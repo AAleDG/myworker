@@ -5,7 +5,6 @@ import 'package:myworkers/core/common_widgets/app_button.dart';
 import 'package:myworkers/core/common_widgets/app_text.dart';
 import 'package:myworkers/core/l10n/l10n_ext.dart';
 import 'package:myworkers/core/router/router.dart';
-import 'package:myworkers/features/firebase/auth_gate.dart';
 import 'package:myworkers/features/supabase/supabase_google_sign_in.dart';
 
 @RoutePage()
@@ -40,9 +39,8 @@ class InitialPage extends StatelessWidget {
                     height: 50,
                   ),
                   AppButton(
-                    onPressed: () {
-                      AutoRouter.of(context).push(const LoginRoute());
-                    },
+                    onPressed: () =>
+                        AutoRouter.of(context).push(const LoginRoute()),
                     textButton: context.l10nCore.splashPageAccessButtonText,
                   ),
                   const SizedBox(
@@ -58,15 +56,10 @@ class InitialPage extends StatelessWidget {
                     height: 50,
                   ),
                   GestureDetector(
-                    onTap: () async {
-                       SupabaseGoogleSignIn.googleSignIn().then((value) {
-                            AutoRouter.of(context).push(const HomeRoute());
-                          });
-                      // await GoogleSignInService.signInWithGoogle()
-                      //     .then((value) {
-                      //   AutoRouter.of(context).push(const HomeRoute());
-                      // });
-                    },
+                    onTap: () async =>
+                        SupabaseGoogleSignIn.googleSignIn().then((value) {
+                      AutoRouter.of(context).push(const HomeRoute());
+                    }),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
