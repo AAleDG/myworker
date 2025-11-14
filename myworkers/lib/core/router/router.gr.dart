@@ -91,7 +91,7 @@ class PersonalInformationRoute
     extends PageRouteInfo<PersonalInformationRouteArgs> {
   PersonalInformationRoute({
     Key? key,
-    UserEntity? user,
+    User? user,
     List<PageRouteInfo>? children,
   }) : super(
           PersonalInformationRoute.name,
@@ -125,7 +125,7 @@ class PersonalInformationRouteArgs {
 
   final Key? key;
 
-  final UserEntity? user;
+  final User? user;
 
   @override
   String toString() {

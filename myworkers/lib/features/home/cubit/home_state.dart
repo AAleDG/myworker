@@ -1,7 +1,7 @@
 part of 'home_cubit.dart';
 
 class HomeState extends Equatable {
-  final UserEntity? user;
+  final User? user;
   final int index;
   
   const HomeState({
@@ -15,7 +15,7 @@ class HomeState extends Equatable {
       ];
 
   HomeState copyWith({
-    UserEntity? user,
+    User? user,
     int? index,
   }) {
     return HomeState(

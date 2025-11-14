@@ -58,10 +58,10 @@ class InitialPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await GoogleSignInService.signInWithGoogle()
-                          .then((value) {
-                        AutoRouter.of(context).push(const HomeRoute());
-                      });
+                      // await GoogleSignInService.signInWithGoogle()
+                      //     .then((value) {
+                      //   AutoRouter.of(context).push(const HomeRoute());
+                      // });
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
