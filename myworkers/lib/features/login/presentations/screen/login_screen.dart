@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myworkers/core/l10n/l10n_ext.dart';
-import 'package:myworkers/core/router/router.dart';
 import 'package:myworkers/features/firebase/auth_gate.dart';
 import 'package:myworkers/features/login/cubit/login_cubit.dart';
 
@@ -139,11 +138,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             );
                           }
-                          // GoogleSignInService.loginUser(
-                          //         state.email, state.password)
-                          //     .then((value) {
-                          //   AutoRouter.of(context).push(const HomeRoute());
-                          // });
                         }
                       },
                       textButton: context.l10nCore.loginPageAccessButtonText,
