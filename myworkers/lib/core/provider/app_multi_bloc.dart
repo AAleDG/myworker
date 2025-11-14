@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myworkers/features/home/cubit/home_cubit.dart';
 import 'package:myworkers/features/login/cubit/login_cubit.dart';
 import 'package:myworkers/features/registration/cubit/registration_cubit.dart';
+import 'package:myworkers/features/splash/cubit/splash_cubit.dart';
 
 class AppMultiBlocProvider extends StatelessWidget {
   final Widget child;
@@ -15,6 +16,9 @@ class AppMultiBlocProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => SplashCubit()..startSplashTimer(),
+        ),
         BlocProvider(
           create: (context) => LoginCubit(),
         ),
