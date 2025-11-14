@@ -6,6 +6,7 @@ import 'package:myworkers/core/common_widgets/app_text.dart';
 import 'package:myworkers/core/l10n/l10n_ext.dart';
 import 'package:myworkers/core/router/router.dart';
 import 'package:myworkers/features/firebase/auth_gate.dart';
+import 'package:myworkers/features/supabase/supabase_google_sign_in.dart';
 
 @RoutePage()
 class InitialPage extends StatelessWidget {
@@ -58,6 +59,9 @@ class InitialPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
+                       SupabaseGoogleSignIn.googleSignIn().then((value) {
+                            AutoRouter.of(context).push(const HomeRoute());
+                          });
                       // await GoogleSignInService.signInWithGoogle()
                       //     .then((value) {
                       //   AutoRouter.of(context).push(const HomeRoute());
