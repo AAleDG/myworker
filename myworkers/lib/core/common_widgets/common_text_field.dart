@@ -8,6 +8,10 @@ class AppTextField extends StatelessWidget {
   final void Function(String)? onChange;
   final bool? obscureText;
   final VoidCallback? onPressed;
+  final TextInputType keyboardType;
+  final FocusNode? focusNode;
+  final bool autofocus;
+
   const AppTextField({
     super.key,
     required this.controller,
@@ -17,15 +21,22 @@ class AppTextField extends StatelessWidget {
     this.onChange,
     this.obscureText,
     this.onPressed,
+    this.keyboardType = TextInputType.text,
+    this.focusNode,
+    this.autofocus = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: autofocus,
+      focusNode: focusNode,
       obscureText: obscureText ?? false,
       controller: controller,
+      keyboardType: keyboardType,
       validator: validator,
       onChanged: onChange,
+      enableInteractiveSelection: true,
       decoration: InputDecoration(
         suffixIcon: obscureText != null
             ? IconButton(
@@ -46,6 +57,7 @@ class AppTextField extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
         filled: true,
+        fillColor: Colors.white,
         hintText: hintText,
         hintStyle: const TextStyle(
           color: Colors.grey,

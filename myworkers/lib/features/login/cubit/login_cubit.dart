@@ -27,24 +27,6 @@ class LoginCubit extends Cubit<LoginState> {
   void toggleShowPassword() =>
       emit(state.copyWith(showPassword: !state.showPassword));
 
-  void checkStatus(
-    BuildContext context,
-    bool checkStatus,
-  ) {
-    if (checkStatus) {
-      // AuthService()
-      //     .registerNewUser(
-      //   emailController.text,
-      //   passwordController.text,
-      // )
-      //     .then((value) {
-      //   AutoRouter.of(context).push(HomeRoute());
-      // });
-    } else {
-      return;
-    }
-  }
-
   void updateDataaccess() =>
       emit(state.copyWith(rememberAccessData: !state.rememberAccessData));
 }

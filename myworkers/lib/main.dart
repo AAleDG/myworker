@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return AppMultiBlocProvider(
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerConfig: _appRouter.config(),
         supportedLocales: CoreLocalizations.supportedLocales,
         localizationsDelegates: const [

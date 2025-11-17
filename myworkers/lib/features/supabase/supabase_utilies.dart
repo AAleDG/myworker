@@ -13,6 +13,11 @@ class SignUpResponse {
 class SupabaseUtilies {
   static String? lastSignInAt = '';
 
+  Future<AuthResponse> signIn(String email, String password) {
+    final supabase = Supabase.instance.client;
+    return supabase.auth.signInWithPassword(email: email, password: password);
+  }
+
   /// Sign up. Returns structured response indicating if a session was created
   /// (some Supabase setups auto-login) or if the user must confirm email.
   Future<SignUpResponse> signUpWithEmail(
@@ -70,7 +75,7 @@ class SupabaseUtilies {
       final supabase = Supabase.instance.client;
       final res = await supabase.auth.signInWithPassword(
         email: email,
-        password: 'salmo12',
+        password: password,
       );
       final session = res.session;
       return session != null;

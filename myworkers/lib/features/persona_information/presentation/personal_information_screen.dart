@@ -21,7 +21,6 @@ class PersonalInformationScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                 AppText(
@@ -29,18 +28,19 @@ class PersonalInformationScreen extends StatelessWidget {
                   maxLines: 2,
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppText(
-                    'Email: ${user?.email}',
-                    style: CommonTextStyle.standard.copyWith(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
+                AppText(
+                  'Email:',
+                  style: CommonTextStyle.standard.copyWith(
+                    color: Colors.black,
+                    fontSize: 20,
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(color: Colors.grey, width: 2.0),
+                  textAlign: TextAlign.center,
+                ),
+                AppText(
+                  '${user?.email}',
+                  style: CommonTextStyle.standard.copyWith(
+                    color: Colors.white,
+                    fontSize: 16,
                   ),
                 ),
                 const SizedBox(height: 20),

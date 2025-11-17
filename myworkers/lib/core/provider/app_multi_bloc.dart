@@ -20,7 +20,7 @@ class AppMultiBlocProvider extends StatelessWidget {
           create: (context) => SplashCubit()..startSplashTimer(),
         ),
         BlocProvider(
-          create: (context) => LoginCubit(),
+          create: (context) => LoginCubit()..initCubit(),
         ),
         BlocProvider(
           create: (context) => RegistrationCubit(),

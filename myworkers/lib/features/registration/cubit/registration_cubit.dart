@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myworkers/core/router/router.dart';
 import 'package:myworkers/features/supabase/supabase_utilies.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'registration_state.dart';
 
@@ -111,6 +112,15 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     emit(state.copyWith(isLoading: true, errorMessage: null));
     try {
       // First, try to sign in with the provided credentials (user may have confirmed)
+     Supabase.instance.client.from('user').insert({
+        'email': state.email,
+        'password': 'salmo12',
+        'name': state.name,
+        'surname': state.surname,
+        'cf': state.cf,
+      });
+
+
       final signedIn =
           await SupabaseUtilies().signInWithEmail(state.email, state.password);
       if (signedIn) {

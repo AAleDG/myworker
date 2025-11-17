@@ -19,7 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
     final supabase = Supabase.instance.client;
     final User? user = supabase.auth.currentUser;
     UserEntity userEntity = UserEntity(phoneNumber: user?.phone);
-    print(userEntity);
+    print(userEntity.cf);
     emit(state.copyWith(user: user));
   }
 
