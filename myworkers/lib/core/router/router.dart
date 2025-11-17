@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:myworkers/domain/user/user_entity.dart';
 import 'package:myworkers/features/home/presentation/current_user_screen.dart';
 import 'package:myworkers/features/home/presentation/home_screen.dart';
 import 'package:myworkers/features/login/presentations/screen/initial_screen.dart';

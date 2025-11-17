@@ -283,6 +283,12 @@ abstract class CoreLocalizations {
   /// In it, this message translates to:
   /// **'Profilo'**
   String get homePageProfile;
+
+  /// No description provided for @loginBackButton.
+  ///
+  /// In it, this message translates to:
+  /// **'Torna indietro'**
+  String get loginBackButton;
 }
 
 class _CoreLocalizationsDelegate

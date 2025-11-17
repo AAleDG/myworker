@@ -15,12 +15,12 @@ class HomeCubit extends Cubit<HomeState> {
           const HomeState(),
         );
 
-  Future<void> getCurrentUser() async {
+  Future<void> getCurrentUser(UserEntity? userEntity) async {
     final supabase = Supabase.instance.client;
-    final User? user = supabase.auth.currentUser;
-    UserEntity userEntity = UserEntity(phoneNumber: user?.phone);
-    print(userEntity.cf);
-    emit(state.copyWith(user: user));
+
+    UserEntity? userEntityy = userEntity;
+
+    emit(state.copyWith(user: userEntityy));
   }
 
   void updateIndex(int newIndex) => emit(state.copyWith(index: newIndex));

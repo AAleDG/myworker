@@ -87,8 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: state.showPassword,
                       onPressed: () {
                         cubit.toggleShowPassword();
-                        _emailFocusNode.unfocus();
-                        _passwordFocusNode.requestFocus();
+                        FocusScope.of(context).requestFocus(_passwordFocusNode);
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -145,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                           .then((value) {
                         if (value.session != null) {
-                          AutoRouter.of(context).replace(const HomeRoute());
+                          AutoRouter.of(context).replace( HomeRoute());
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -157,6 +156,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                   textButton: context.l10nCore.loginPageAccessButtonText,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                AppButton(
+                  onPressed: () => AutoRouter.of(context).popForced(),
+                  textButton: context.l10nCore.loginBackButton,
                 ),
               ],
             ),

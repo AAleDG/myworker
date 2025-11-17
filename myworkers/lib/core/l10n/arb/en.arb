@@ -30,5 +30,6 @@
   "loginTextWithGoogle":"Accedi con Google",
   "homePagePersonalInfo":"Info Personali",
   "homePageRequest":"Richieste",
-  "homePageProfile":"Profilo"
+  "homePageProfile":"Profilo",
+  "loginBackButton":"Torna indietro"
 }

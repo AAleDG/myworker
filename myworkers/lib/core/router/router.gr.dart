@@ -30,10 +30,17 @@ class CurrentUserRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [HomeScreen]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
+class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    Key? key,
+    UserEntity? user,
+    List<PageRouteInfo>? children,
+  }) : super(
           HomeRoute.name,
+          args: HomeRouteArgs(
+            key: key,
+            user: user,
+          ),
           initialChildren: children,
         );
 
@@ -42,9 +49,30 @@ class HomeRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const HomeScreen();
+      final args =
+          data.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      return HomeScreen(
+        key: args.key,
+        user: args.user,
+      );
     },
   );
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({
+    this.key,
+    this.user,
+  });
+
+  final Key? key;
+
+  final UserEntity? user;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key, user: $user}';
+  }
 }
 
 /// generated route for
@@ -91,7 +119,7 @@ class PersonalInformationRoute
     extends PageRouteInfo<PersonalInformationRouteArgs> {
   PersonalInformationRoute({
     Key? key,
-    User? user,
+    UserEntity? user,
     List<PageRouteInfo>? children,
   }) : super(
           PersonalInformationRoute.name,
@@ -125,7 +153,7 @@ class PersonalInformationRouteArgs {
 
   final Key? key;
 
-  final User? user;
+  final UserEntity? user;
 
   @override
   String toString() {

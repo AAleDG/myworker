@@ -189,7 +189,34 @@ class RegistrationScreen extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      //TODO TOGLIERE IL NUMERO DI CONFERMA ED FAR ARRIVARE AL TELEFONO DI ALE IL CODICE DI CONFERMA
+                      AppTextField(
+                        onChange:
+                            context.read<RegistrationCubit>().updatePassword,
+                        controller: context
+                            .read<RegistrationCubit>()
+                            .passwordController,
+                        //focusNode: _passwordFocusNode,
+                        hintText: context.l10nCore.loginPagePasswordHint,
+                        obscureText: state.showPassword,
+                        onPressed: () {
+                          context
+                              .read<RegistrationCubit>()
+                              .toggleShowPassword();
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return context
+                                .l10nCore.loginPageHintTextErrorEmptyPassword;
+                          } else if (value.length > 12) {
+                            return context
+                                .l10nCore.loginPageHintTextValidPassword;
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
                       AppButton(
                         onPressed: () {
                           context.read<RegistrationCubit>().checkStatus(
@@ -199,6 +226,13 @@ class RegistrationScreen extends StatelessWidget {
                         },
                         textButton:
                             context.l10nCore.splashPageRegisterButtonText,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      AppButton(
+                        onPressed: () => AutoRouter.of(context).popForced(),
+                        textButton: context.l10nCore.loginBackButton,
                       ),
                     ],
                   ),

@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myworkers/core/router/router.dart';
+import 'package:myworkers/domain/user/user_entity.dart';
 import 'package:myworkers/features/supabase/supabase_utilies.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -77,11 +78,25 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     final password = passwordController.text;
     emit(state.copyWith(isLoading: true, errorMessage: null));
 
-    SupabaseUtilies().signUpWithEmail(state.email, password).then((res) async {
+    SupabaseUtilies().signUpWithEmail(state.email, 'salmo12').then((res) async {
       emit(state.copyWith(isLoading: false));
       if (res.status == SignUpStatus.successWithSession) {
+        Supabase.instance.client.from('user').insert({
+          'email': state.email,
+          'password': 'salmo12',
+          'name': state.name,
+          'surname': state.surname,
+          'cf': state.cf,
+        });
+        UserEntity? user = UserEntity(
+          email: state.email,
+          name: state.name,
+          surname: state.surname,
+          cf: state.cf,
+          phoneNumber: state.phone,
+        );
         // session created - proceed to home
-        AutoRouter.of(context).push(HomeRoute());
+        AutoRouter.of(context).push(HomeRoute(user: user));
       } else if (res.status == SignUpStatus.awaitingConfirmation) {
         // no session - must confirm email
         emit(state.copyWith(isAwaitingConfirmation: true));
@@ -112,21 +127,27 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     emit(state.copyWith(isLoading: true, errorMessage: null));
     try {
       // First, try to sign in with the provided credentials (user may have confirmed)
-     Supabase.instance.client.from('user').insert({
+      Supabase.instance.client.from('user').insert({
         'email': state.email,
         'password': 'salmo12',
         'name': state.name,
         'surname': state.surname,
         'cf': state.cf,
       });
-
+      UserEntity? user = UserEntity(
+        email: state.email,
+        name: state.name,
+        surname: state.surname,
+        cf: state.cf,
+        phoneNumber: state.phone,
+      );
 
       final signedIn =
-          await SupabaseUtilies().signInWithEmail(state.email, state.password);
+          await SupabaseUtilies().signInWithEmail(state.email, 'salmo12');
       if (signedIn) {
         _confirmationTimer?.cancel();
         emit(state.copyWith(isAwaitingConfirmation: false, isLoading: false));
-        AutoRouter.of(context).push(HomeRoute());
+        AutoRouter.of(context).push(HomeRoute(user: user));
         return;
       }
 

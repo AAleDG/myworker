@@ -106,4 +106,7 @@ class CoreLocalizationsIt extends CoreLocalizations {
 
   @override
   String get homePageProfile => 'Profilo';
+
+  @override
+  String get loginBackButton => 'Torna indietro';
 }

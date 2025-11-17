@@ -31,7 +31,7 @@ class InitialPage extends StatelessWidget {
                 ),
                 AppButton(
                   onPressed: () =>
-                      AutoRouter.of(context).replace(const LoginRoute()),
+                      AutoRouter.of(context).push(const LoginRoute()),
                   textButton: context.l10nCore.splashPageAccessButtonText,
                 ),
                 const SizedBox(
@@ -39,7 +39,7 @@ class InitialPage extends StatelessWidget {
                 ),
                 AppButton(
                   onPressed: () =>
-                      AutoRouter.of(context).replace(const RegistrationRoute()),
+                      AutoRouter.of(context).push(const RegistrationRoute()),
                   textButton: context.l10nCore.splashPageRegisterButtonText,
                 ),
                 const SizedBox(
@@ -48,7 +48,7 @@ class InitialPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () async =>
                       SupabaseGoogleSignIn.googleSignIn().then((value) {
-                    AutoRouter.of(context).replace(const HomeRoute());
+                    AutoRouter.of(context).replace( HomeRoute());
                   }),
                   child: const GoogleButtonLoginWidget(),
                 ),

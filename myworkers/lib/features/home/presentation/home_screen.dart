@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myworkers/core/l10n/l10n.dart';
 import 'package:myworkers/core/utils/common_icon.dart';
+import 'package:myworkers/domain/user/user_entity.dart';
 import 'package:myworkers/features/home/cubit/home_cubit.dart';
 import 'package:myworkers/features/home/widgets/navigation_bar_item_widget.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final UserEntity? user;
+  const HomeScreen({super.key, this.user});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -19,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async{
-      await context.read<HomeCubit>().getCurrentUser();
+      await context.read<HomeCubit>().getCurrentUser(widget.user);
     });
   }
 

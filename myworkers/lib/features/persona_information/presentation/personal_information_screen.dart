@@ -2,11 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:myworkers/core/common_widgets/app_text.dart';
 import 'package:myworkers/core/utils/common_style.dart';
+import 'package:myworkers/domain/export_entity.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 @RoutePage()
 class PersonalInformationScreen extends StatelessWidget {
-  final User? user;
+  final UserEntity? user;
   const PersonalInformationScreen({super.key, this.user});
 
   @override
@@ -62,7 +63,7 @@ class PersonalInformationScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   child: AppText(
-                    'Cognome: ${user?.actionLink}',
+                    'Cognome: ${user?.cf}',
                     style: CommonTextStyle.standard.copyWith(
                       color: Colors.black,
                       fontSize: 20,
@@ -77,7 +78,7 @@ class PersonalInformationScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   child: AppText(
-                    'Phone: ${user?.actionLink}',
+                    'Phone: ${user?.name}',
                     style: CommonTextStyle.standard.copyWith(
                       color: Colors.black,
                       fontSize: 20,
@@ -92,7 +93,7 @@ class PersonalInformationScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   child: AppText(
-                    'CF: ${user?.actionLink}',
+                    'CF: ${user?.phoneNumber}',
                     style: CommonTextStyle.standard.copyWith(
                       color: Colors.black,
                       fontSize: 20,
@@ -107,7 +108,7 @@ class PersonalInformationScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   child: AppText(
-                    'UID: ${user?.aud}',
+                    'UID: ${user?.uid}',
                     style: CommonTextStyle.standard.copyWith(
                       color: Colors.black,
                       fontSize: 20,
