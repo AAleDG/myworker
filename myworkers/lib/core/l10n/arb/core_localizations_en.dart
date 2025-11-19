@@ -109,4 +109,25 @@ class CoreLocalizationsEn extends CoreLocalizations {
 
   @override
   String get loginBackButton => 'Torna indietro';
+
+  @override
+  String get personalInfoPageTitle => 'Ecco le tue informazioni personali';
+
+  @override
+  String get personalInfoPageEmail => 'Email:';
+
+  @override
+  String get personalInfoPageName => 'Nome:';
+
+  @override
+  String get personalInfoPageSurname => 'Cognome:';
+
+  @override
+  String get personalInfoPageCF => 'Codice Fiscale:';
+
+  @override
+  String get personalInfoPageGender => 'Genere:';
+
+  @override
+  String get personalInfoPagePhone => 'Numero di Telefono:';
 }

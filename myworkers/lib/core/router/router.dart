@@ -9,7 +9,6 @@ import 'package:myworkers/features/persona_information/presentation/personal_inf
 import 'package:myworkers/features/registration/presentations/registration_screen.dart';
 import 'package:myworkers/features/requests/presentation/request_screen.dart';
 import 'package:myworkers/features/splash/presentation/splash_screen.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'router.gr.dart';
 

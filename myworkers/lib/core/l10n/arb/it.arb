@@ -27,9 +27,16 @@
   "registrationGenderErrorEmpty": "Seleziona un genere valido!",
   "registrationPhoneErrorEmpty": "Inserisci un numero di telefono valido!",
   "registrationPhoneLengthError": "Il numero di telefono deve essere di almeno 10 cifre!",
-  "loginTextWithGoogle":"Accedi con Google",
-  "homePagePersonalInfo":"Info Personali",
-  "homePageRequest":"Richieste",
-  "homePageProfile":"Profilo",
-  "loginBackButton":"Torna indietro"
+  "loginTextWithGoogle": "Accedi con Google",
+  "homePagePersonalInfo": "Info Personali",
+  "homePageRequest": "Richieste",
+  "homePageProfile": "Profilo",
+  "loginBackButton": "Torna indietro",
+  "personalInfoPageTitle": "Ecco le tue informazioni personali",
+  "personalInfoPageEmail": "Email:",
+  "personalInfoPageName": "Nome:",
+  "personalInfoPageSurname": "Cognome:",
+  "personalInfoPageCF": "Codice Fiscale:",
+  "personalInfoPageGender": "Genere:",
+  "personalInfoPagePhone": "Numero di Telefono:"
 }

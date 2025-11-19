@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:myworkers/core/common_widgets/app_text.dart';
+import 'package:myworkers/core/l10n/l10n.dart';
 import 'package:myworkers/core/utils/common_style.dart';
 import 'package:myworkers/domain/export_entity.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 @RoutePage()
 class PersonalInformationScreen extends StatelessWidget {
@@ -14,116 +14,99 @@ class PersonalInformationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue,
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20.0),
-        child: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                AppText(
-                  'Ecco le tue informazioni personali',
-                  maxLines: 2,
+      body: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              AppText(
+                context.l10nCore.personalInfoPageTitle,
+                maxLines: 2,
+              ),
+              const SizedBox(height: 20),
+              AppText(
+                context.l10nCore.personalInfoPageEmail,
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.black,
+                  fontSize: 20,
                 ),
-                const SizedBox(height: 20),
-                AppText(
-                  'Email:',
-                  style: CommonTextStyle.standard.copyWith(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
-                  textAlign: TextAlign.center,
+                textAlign: TextAlign.center,
+              ),
+              AppText(
+                '${user?.email}',
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.white,
+                  fontSize: 16,
                 ),
-                AppText(
-                  '${user?.email}',
-                  style: CommonTextStyle.standard.copyWith(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
+              ),
+              const SizedBox(height: 20),
+              AppText(
+                context.l10nCore.personalInfoPageName,
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.black,
+                  fontSize: 20,
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppText(
-                    'Nome: ${user?.email}',
-                    style: CommonTextStyle.standard.copyWith(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(color: Colors.grey, width: 2.0),
-                  ),
+                textAlign: TextAlign.center,
+              ),
+              AppText(
+                '${user?.name}',
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.white,
+                  fontSize: 16,
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppText(
-                    'Cognome: ${user?.cf}',
-                    style: CommonTextStyle.standard.copyWith(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(color: Colors.grey, width: 2.0),
-                  ),
+              ),
+              const SizedBox(height: 20),
+              AppText(
+                context.l10nCore.personalInfoPageSurname,
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.black,
+                  fontSize: 20,
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppText(
-                    'Phone: ${user?.name}',
-                    style: CommonTextStyle.standard.copyWith(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(color: Colors.grey, width: 2.0),
-                  ),
+                textAlign: TextAlign.center,
+              ),
+              AppText(
+                '${user?.surname}',
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.white,
+                  fontSize: 16,
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppText(
-                    'CF: ${user?.phoneNumber}',
-                    style: CommonTextStyle.standard.copyWith(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(color: Colors.grey, width: 2.0),
-                  ),
+              ),
+              const SizedBox(height: 20),
+              AppText(
+                context.l10nCore.personalInfoPagePhone,
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.black,
+                  fontSize: 20,
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppText(
-                    'UID: ${user?.uid}',
-                    style: CommonTextStyle.standard.copyWith(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                    maxLines: 2,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(color: Colors.grey, width: 2.0),
-                  ),
+                textAlign: TextAlign.center,
+              ),
+              AppText(
+                '${user?.phoneNumber}',
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.white,
+                  fontSize: 16,
                 ),
-                const SizedBox(height: 20),
-                const SizedBox(height: 20),
-              ],
-            ),
+              ),
+              const SizedBox(height: 20),
+              AppText(
+                context.l10nCore.personalInfoPageCF,
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              AppText(
+                '${user?.cf}',
+                style: CommonTextStyle.standard.copyWith(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -289,6 +289,48 @@ abstract class CoreLocalizations {
   /// In it, this message translates to:
   /// **'Torna indietro'**
   String get loginBackButton;
+
+  /// No description provided for @personalInfoPageTitle.
+  ///
+  /// In it, this message translates to:
+  /// **'Ecco le tue informazioni personali'**
+  String get personalInfoPageTitle;
+
+  /// No description provided for @personalInfoPageEmail.
+  ///
+  /// In it, this message translates to:
+  /// **'Email:'**
+  String get personalInfoPageEmail;
+
+  /// No description provided for @personalInfoPageName.
+  ///
+  /// In it, this message translates to:
+  /// **'Nome:'**
+  String get personalInfoPageName;
+
+  /// No description provided for @personalInfoPageSurname.
+  ///
+  /// In it, this message translates to:
+  /// **'Cognome:'**
+  String get personalInfoPageSurname;
+
+  /// No description provided for @personalInfoPageCF.
+  ///
+  /// In it, this message translates to:
+  /// **'Codice Fiscale:'**
+  String get personalInfoPageCF;
+
+  /// No description provided for @personalInfoPageGender.
+  ///
+  /// In it, this message translates to:
+  /// **'Genere:'**
+  String get personalInfoPageGender;
+
+  /// No description provided for @personalInfoPagePhone.
+  ///
+  /// In it, this message translates to:
+  /// **'Numero di Telefono:'**
+  String get personalInfoPagePhone;
 }
 
 class _CoreLocalizationsDelegate

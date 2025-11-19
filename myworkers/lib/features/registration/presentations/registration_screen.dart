@@ -218,12 +218,11 @@ class RegistrationScreen extends StatelessWidget {
                         height: 30,
                       ),
                       AppButton(
-                        onPressed: () {
-                          context.read<RegistrationCubit>().checkStatus(
-                                context,
-                                keys.currentState!.validate(),
-                              );
-                        },
+                        onPressed: () =>
+                            context.read<RegistrationCubit>().checkStatus(
+                                  context,
+                                  keys.currentState!.validate(),
+                                ),
                         textButton:
                             context.l10nCore.splashPageRegisterButtonText,
                       ),

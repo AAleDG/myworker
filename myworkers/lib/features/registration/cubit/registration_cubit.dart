@@ -75,20 +75,29 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     if (!checkStatus) return;
 
     // Start registration: use the provided password controller value
-    final password = passwordController.text;
     emit(state.copyWith(isLoading: true, errorMessage: null));
 
-    SupabaseUtilies().signUpWithEmail(state.email, 'salmo12').then((res) async {
+    SupabaseUtilies()
+        .signUpWithEmail(state.email, state.password)
+        .then((res) async {
       emit(state.copyWith(isLoading: false));
       if (res.status == SignUpStatus.successWithSession) {
-        Supabase.instance.client.from('user').insert({
-          'email': state.email,
-          'password': 'salmo12',
-          'name': state.name,
-          'surname': state.surname,
-          'cf': state.cf,
-        });
-        UserEntity? user = UserEntity(
+        // Insert user profile data into the 'user' table
+        try {
+          await Supabase.instance.client.from('user').insert({
+            'name': state.name,
+            'surname': state.surname,
+            'cf': state.cf,
+            'password': state.password,
+            'email': state.email,
+            'phone_number': state.phone,
+            // Do NOT store password in the table — Supabase Auth handles it
+          });
+        } catch (e) {
+          debugPrint('Error inserting user profile: $e');
+        }
+
+        final user = UserEntity(
           email: state.email,
           name: state.name,
           surname: state.surname,
@@ -127,26 +136,33 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     emit(state.copyWith(isLoading: true, errorMessage: null));
     try {
       // First, try to sign in with the provided credentials (user may have confirmed)
-      Supabase.instance.client.from('user').insert({
-        'email': state.email,
-        'password': 'salmo12',
-        'name': state.name,
-        'surname': state.surname,
-        'cf': state.cf,
-      });
-      UserEntity? user = UserEntity(
-        email: state.email,
-        name: state.name,
-        surname: state.surname,
-        cf: state.cf,
-        phoneNumber: state.phone,
-      );
-
       final signedIn =
-          await SupabaseUtilies().signInWithEmail(state.email, 'salmo12');
+          await SupabaseUtilies().signInWithEmail(state.email, state.password);
       if (signedIn) {
         _confirmationTimer?.cancel();
         emit(state.copyWith(isAwaitingConfirmation: false, isLoading: false));
+
+        // Insert user profile data into the 'user' table (if not already done)
+        try {
+          await Supabase.instance.client.from('user').insert({
+            'name': state.name,
+            'surname': state.surname,
+            'cf': state.cf,
+            'password': state.password,
+            'email': state.email,
+            'phone_number': state.phone,
+          });
+        } catch (e) {
+          debugPrint('Error inserting user profile: $e');
+        }
+
+        final user = UserEntity(
+          email: state.email,
+          name: state.name,
+          surname: state.surname,
+          cf: state.cf,
+          phoneNumber: state.phone,
+        );
         AutoRouter.of(context).push(HomeRoute(user: user));
         return;
       }

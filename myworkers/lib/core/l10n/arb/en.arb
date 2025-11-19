@@ -31,5 +31,12 @@
   "homePagePersonalInfo":"Info Personali",
   "homePageRequest":"Richieste",
   "homePageProfile":"Profilo",
-  "loginBackButton":"Torna indietro"
+  "loginBackButton":"Torna indietro",
+  "personalInfoPageTitle": "Ecco le tue informazioni personali",
+  "personalInfoPageEmail": "Email:",
+  "personalInfoPageName": "Nome:",
+  "personalInfoPageSurname": "Cognome:",
+  "personalInfoPageCF": "Codice Fiscale:",
+  "personalInfoPageGender": "Genere:",
+  "personalInfoPagePhone": "Numero di Telefono:"
 }

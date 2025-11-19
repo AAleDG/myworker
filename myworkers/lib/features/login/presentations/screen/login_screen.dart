@@ -137,22 +137,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 AppButton(
                   onPressed: () async {
                     if (keys.currentState!.validate()) {
-                      SupabaseUtilies()
-                          .signIn(
+                      final user = await SupabaseUtilies().signIn(
                         cubit.emailController.text,
                         cubit.passwordController.text,
-                      )
-                          .then((value) {
-                        if (value.session != null) {
-                          AutoRouter.of(context).replace( HomeRoute());
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: AppText('Error during login process'),
-                            ),
-                          );
-                        }
-                      });
+                      );
+
+                      if (user != null) {
+                        AutoRouter.of(context).replace(HomeRoute(user: user));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: AppText('Error during login process'),
+                          ),
+                        );
+                      }
                     }
                   },
                   textButton: context.l10nCore.loginPageAccessButtonText,
